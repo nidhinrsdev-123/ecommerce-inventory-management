@@ -1,5 +1,5 @@
 from django.db import transaction
-from rest_framework import viewsets,status
+from rest_framework import viewsets,status,mixins
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -13,7 +13,7 @@ class ProductViewSet(viewsets.ModelViewSet):
  def get_queryset(self):
   qs=Product.objects.all()
   return qs if self.request.user.is_staff else qs.filter(is_active=True)
-class OrderViewSet(viewsets.ReadOnlyModelViewSet):
+class OrderViewSet(mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.CreateModelMixin,viewsets.GenericViewSet):
  serializer_class=OrderSerializer; permission_classes=[IsAuthenticated,IsOrderOwnerOrStaff]
  def get_queryset(self):
   qs=Order.objects.prefetch_related("items__product").select_related("customer")
