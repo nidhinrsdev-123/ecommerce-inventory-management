@@ -38,3 +38,17 @@ Run pytest. SQLite is the default fallback; DATABASE_URL selects PostgreSQL.
 
 ## Engineering notes
 Checkout uses a database transaction and row locks to reduce overselling. Payment-card details are intentionally out of scope. Production systems should add payment-provider webhooks, idempotency keys, audit logs, background jobs, and monitoring.
+
+
+## Folder tree
+ecommerce-inventory-management/
+|-- config/                 Django project settings and root routes
+|-- shop/                   Product, order, and order-item domain
+|-- shop/migrations/        Database schema migrations
+|-- tests/                  Checkout and inventory workflow tests
+|-- .github/workflows/      Continuous integration
+|-- .env.example            Local configuration template
+|-- manage.py               Django command-line entry point
+|-- pytest.ini              pytest configuration
+|-- requirements.txt        Python dependencies
+|-- README.md               Project and API documentation
