@@ -17,41 +17,40 @@ Python 3.11+, Django 5, Django REST Framework, django-filter, drf-spectacular, P
 
 ## Exact repository structure
 
-This tree matches the files currently committed to GitHub:
+This tree matches the files currently committed to GitHub. Inline comments explain the purpose of each folder and file.
 
-~~~text
+```text
 ecommerce-inventory-management/
-├── .github/
-│   └── workflows/
-│       └── tests.yml
-├── config/
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── shop/
-│   ├── __init__.py
-│   ├── migrations/
-│   │   ├── __init__.py
-│   │   └── 0001_initial.py
-│   ├── admin.py
-│   ├── models.py
-│   ├── permissions.py
-│   ├── serializers.py
-│   ├── services.py
-│   └── views.py
-├── tests/
-│   ├── __init__.py
-│   └── test_orders.py
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── manage.py
-├── pytest.ini
-├── README.md
-└── requirements.txt
-~~~
-
+├── .env.example  # Template for environment variables
+├── .github/  # GitHub automation and repository workflows
+│   └── workflows/  # Continuous integration workflows
+│       └── tests.yml  # Runs automated tests on pushes and pull requests
+├── .gitignore  # Files Git should ignore
+├── LICENSE  # Project license
+├── README.md  # Project overview, setup guide and API documentation
+├── config/  # Django project configuration
+│   ├── __init__.py  # Marks config as a Python package
+│   ├── settings.py  # Installed apps, database, authentication and security settings
+│   ├── urls.py  # Root URL patterns and API routing
+│   └── wsgi.py  # WSGI entry point for deployment
+├── manage.py  # Django command-line entry point
+├── pytest.ini  # Configures pytest
+├── requirements.txt  # Lists required Python packages
+├── shop/  # E-commerce catalog, inventory and order application
+│   ├── __init__.py  # Marks shop as a Python package
+│   ├── admin.py  # Registers models in Django admin
+│   ├── migrations/  # Versioned database schema changes
+│   │   ├── 0001_initial.py  # Creates the initial shop database schema
+│   │   └── __init__.py  # Marks migrations as a Python package
+│   ├── models.py  # Defines product, order and order-item database models
+│   ├── permissions.py  # Defines staff write access and order ownership rules
+│   ├── serializers.py  # Validates and represents product and order API data
+│   ├── services.py  # Implements checkout and stock update business logic
+│   └── views.py  # Implements product, order and status endpoints
+└── tests/  # Automated application tests
+    ├── __init__.py  # Marks tests as a Python package
+    └── test_orders.py  # Tests checkout, stock handling and order permissions
+```
 ## Step-by-step: run locally (Windows)
 
 ### 1. Install prerequisites
